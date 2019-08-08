@@ -1,0 +1,15 @@
+<div class="d-md-flex h-md-100 align-items-center">
+
+  <div class="col-md-6 h-md-100">
+      <ul>
+        <li (click)="toggleProfile()" *ngFor="let user of myUsers" > {{user.login}} </li>
+      </ul>
+  </div>
+
+  <div class="col-md-6">
+    <div class="d-md-flex align-items-center justify-content-center">
+      <app-user-profile *ngIf="isProfileViewable"></app-user-profile>
+    </div>
+  </div>
+
+</div>
