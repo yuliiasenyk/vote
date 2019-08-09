@@ -1,6 +1,49 @@
 import { IUser } from '../models/user-interface';
 
-export const users: IUser[] = [
-  {id: 1, login: 'admin', password: 'password', isAdmin: true},
-  {id: 2, login: 'user', password: 'password', isAdmin: false},
-]
+export const USERS: IUser[] = [
+  {
+    id: 1,
+    name: 'George',
+    description: 'some description',
+    login: 'admin',
+    password: 'password',
+    status: 'active',
+    isAdmin: true,
+  },
+  {
+    id: 2,
+    name: 'Ivan',
+    description: 'some description',
+    login: 'Ivan',
+    status: 'pending',
+    password: 'password',
+    isAdmin: false,
+  },
+  {
+    id: 3,
+    name: 'Kate',
+    description: 'some description',
+    login: 'Kate',
+    password: 'password',
+    status: 'blocked',
+    isAdmin: false,
+  },
+  {
+    id: 4,
+    name: 'Diana',
+    description: 'some description',
+    login: 'Diana',
+    password: 'password',
+    status: 'active',
+    isAdmin: false,
+  },
+  {
+    id: 5,
+    name: 'Evo',
+    description: 'some description',
+    login: 'Evo',
+    status: 'active',
+    password: 'password',
+    isAdmin: false,
+  },
+];

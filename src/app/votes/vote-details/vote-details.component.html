@@ -1,1 +1,36 @@
-<p>vote-details works!</p>
+
+<h3>{{ currentVote.name || 'Name' }}</h3>
+<p>{{ currentVote.description }}</p>
+
+<strong class="options">Options </strong>
+<button (click)="addNewOption()">Add option</button>
+<br>
+
+<div  *ngFor="let option of currentVote.options">
+  <input type="radio" id="option" value="huey"
+         checked>
+  <label class="options" for="option">{{ option }} </label>
+<button (click)="deleteOption()">delete option</button>
+</div>
+
+<strong>Participant </strong>
+<button (click)="generateAnonymous()">Generate anonymous</button>
+<button (click)="useCurrentAccount()">Use current account</button>
+<div>
+    <label for="participant-name"> </label>
+    <input id="participant-name" type="text">   <input type="checkbox" id="remember-participant" value="remembered" checked>
+-    <label for="remember-participant">Remember</label>
+  </div>
+  <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="vote()">Vote</button>
+<br>
+<button type="button" class="btn btn-secondary btn-lg btn-block" (click)="seeResults()">Results</button>
+<button type="button" class="btn btn-secondary btn-lg btn-block" (click)="seeParticipantStats()">Participant statistic</button>
+
+<div class="btn-group btn-block" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary" (click)="editVote()">Edit</button>
+  <button type="button" class="btn btn-secondary" (click)="runVote()">Run</button>
+  <button type="button" class="btn btn-danger" (click)="stopVote()">Stop</button>
+  <button type="button" class="btn btn-danger" (click)="deleteVote()">Delete</button>
+  <button type="button" class="btn btn-danger" (click)="archiveVote()">Archive</button>
+</div>
+

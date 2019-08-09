@@ -1,15 +1,18 @@
 <div class="d-md-flex h-md-100 align-items-center">
+  <div class="col-sm-6">
+    <button class = "btn btn-dark" (click)="addNewUser()">New user</button>
 
-  <div class="col-md-6 h-md-100">
-      <ul>
-        <li (click)="toggleProfile()" *ngFor="let user of myUsers" > {{user.login}} </li>
-      </ul>
+    <app-users-list
+      [users]="users"
+      (userSelected)="userSelected($event)"
+    ></app-users-list>
+    <app-paginator></app-paginator>
   </div>
 
-  <div class="col-md-6">
-    <div class="d-md-flex align-items-center justify-content-center">
-      <app-user-profile *ngIf="isProfileViewable"></app-user-profile>
-    </div>
+  <div class="col-sm-6">
+    <app-user-profile
+      *ngIf="currentUser"
+      [currentUser]="currentUser"
+    ></app-user-profile>
   </div>
-
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {IUser} from '../../models/user-interface';
 
 @Component({
   selector: 'app-user-profile',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-
+  @Input() currentUser: IUser;
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  addNewUser(): void {
+    console.log('new user will be added');
   }
 
 }

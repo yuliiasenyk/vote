@@ -1,1 +1,20 @@
-
+<div class="container">
+  <table class="table table-secondary table-bordered table-hover">
+    <thead class="thead-dark" >
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+      <th scope="col">Permission</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr (click)="rowClicked(user)"  *ngFor="let user of users" >
+      <th>{{user.name}}</th>
+      <td>{{user.description}}</td>
+      <td>{{user.status}}</td>
+      <td>{{user.permissions}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -5,8 +5,12 @@
       [votes]="votes"
       (voteSelected)="voteSelected($event)"
     ></app-votes-list>
-
-    <app-paginator></app-paginator>
+    <app-paginator
+      ng-model="currentPage"
+      total-items="todos.length"
+      max-size="maxSize"
+      boundary-links="true"
+    ></app-paginator>
   </div>
 
   <div class="col-sm-6">

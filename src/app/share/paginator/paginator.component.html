@@ -1,1 +1,10 @@
-<p>paginator works!</p>
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><button class="page-link"><span aria-hidden="true">&laquo;</span></button></li>
+    <li class="page-item"><button class="page-link" [disabled]="true" [hidden]="hiddenLast">{{ page - 1}}</button></li>
+    <li class="page-item active"><button class="page-link">{{ page }}</button></li>
+    <li class="page-item"><button class="page-link" [hidden]="hiddenLast">{{ page + 1}}</button></li>
+    <li class="page-item"><button class="page-link"><span aria-hidden="true">&raquo;</span></button></li>
+  </ul>
+</nav>
+

@@ -1,19 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/models/user-interface';
-import { users } from 'src/app/mockes-data/users';
+import {UsersService} from '../users/users.service';
+
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
+  providers: [UsersService],
 })
 export class UsersComponent implements OnInit {
-  myUsers: IUser[] = users;
-  public isProfileViewable: boolean;
-  constructor() {}
+  users: IUser[];
+  currentUser: IUser;
+
+  constructor(private usersService: UsersService) { }
+
   ngOnInit() {
-    this.isProfileViewable = false; }
-    public toggleProfile(): void { this.isProfileViewable = !this.isProfileViewable;
+    this.usersService.getUsersData().subscribe((users: IUser[]) => {
+      this.users = users;
+      if (Array.isArray(users) && users.length) {
+        this.currentUser = users[3];
+      }
+    });
+  }
+  addNewUser() {
+    console.log('addNewUser clicked');
+  }
+  userSelected(user: IUser): void {
+    console.log(`details about ${user.name} are open`);
   }
 }
 

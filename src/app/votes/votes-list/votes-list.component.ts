@@ -13,18 +13,14 @@ export class VotesListComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
   ngOnChanges(): void {
     console.log('Votes table', this.votes);
   }
   rowClicked(vote: IVote): void {
     this.voteSelected.emit(vote);
   }
-
-
-
 
 }
 
