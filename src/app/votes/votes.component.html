@@ -6,11 +6,9 @@
       (voteSelected)="voteSelected($event)"
     ></app-votes-list>
     <app-paginator
-      ng-model="currentPage"
-      total-items="todos.length"
-      max-size="maxSize"
-      boundary-links="true"
-    ></app-paginator>
+      [pageData]="pageOfVotes"
+      (pageSelected)="pageSelected($event)">
+    </app-paginator>
   </div>
 
   <div class="col-sm-6">

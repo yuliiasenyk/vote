@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {VotesService} from './votes.service';
-import {IVote} from '../models/vote-interface';
+import {IPagedVote, IVote} from '../models/vote-interface';
+import {IPage} from '../models/page-interface';
 
 @Component({
   selector: 'app-votes',
@@ -11,22 +12,29 @@ import {IVote} from '../models/vote-interface';
 export class VotesComponent implements OnInit {
   votes: IVote[];
   currentVote: IVote;
+  pageOfVotes: IPage;
 
   constructor(private votesService: VotesService) { }
 
   ngOnInit() {
-    this.votesService.getVotesData().subscribe((votes: IVote[]) => {
-      this.votes = votes;
-      if (Array.isArray(votes) && votes.length) {
-        this.currentVote = votes[0];
+    this.votesService.getVotesData().subscribe((pagedVote: IPagedVote) => {
+      this.votes = pagedVote.data;
+      this.pageOfVotes = pagedVote.pageData;
+      if (Array.isArray(this.votes) && this.votes.length) {
+        this.currentVote = this.votes[0];
       }
     });
   }
+
   addNewVote() {
     console.log('addNewVote clicked');
   }
+
   voteSelected(vote: IVote): void {
     console.log(`details about ${vote.name} are open`);
   }
 
+  pageSelected(page: number): void {
+console.log('page is clicked');
+  }
 }

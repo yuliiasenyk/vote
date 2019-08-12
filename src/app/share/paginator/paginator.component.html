@@ -1,10 +1,11 @@
-<nav>
-  <ul class="pagination justify-content-center">
-    <li class="page-item"><button class="page-link"><span aria-hidden="true">&laquo;</span></button></li>
-    <li class="page-item"><button class="page-link" [disabled]="true" [hidden]="hiddenLast">{{ page - 1}}</button></li>
-    <li class="page-item active"><button class="page-link">{{ page }}</button></li>
-    <li class="page-item"><button class="page-link" [hidden]="hiddenLast">{{ page + 1}}</button></li>
-    <li class="page-item"><button class="page-link"><span aria-hidden="true">&raquo;</span></button></li>
-  </ul>
-</nav>
-
+<nav> <ul class="pagination justify-content-center">
+  <li>
+    <button (click)="pageClicked(initialPage)" class="page-link">Fist</button>
+  </li>
+  <li  *ngFor="let page of arrayOfPageNumbers">
+    <button (click)="pageClicked(page)" class="page-link" [ngClass]="{active: pageData.page === page}">{{page}}</button>
+  </li>
+  <li>
+    <button (click)="pageClicked(pageData.totalPages)" class="page-link">Last</button>
+  </li>
+</ul> </nav>
