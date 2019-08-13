@@ -35,6 +35,6 @@ export class VotesComponent implements OnInit {
   }
 
   pageSelected(page: number): void {
-console.log('page is clicked');
+console.log(`page ${page} is clicked`);
   }
 }

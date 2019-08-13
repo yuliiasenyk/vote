@@ -1,4 +1,5 @@
 import { IVote } from '../models/vote-interface';
+import {IPagedVote} from '../models/vote-interface';
 
 export const VOTES: IVote[] = [
   {
@@ -38,3 +39,8 @@ export const VOTES: IVote[] = [
     endDate: 'ongoing',
   },
 ]
+
+export const INITIAL_VOTES_DATA: IPagedVote = {
+  data: [],
+  pageData: {page: 1, totalPages: 1},
+};

@@ -25,7 +25,7 @@ export class PaginatorComponent implements OnInit {
   createButtonArray() {
     this.arrayOfPageNumbers = [];
     const pageNumbers = MAX_BUTTON_NUMBER < this.pageData.totalPages ? MAX_BUTTON_NUMBER : this.pageData.totalPages;
-    const offset = Math.floor(pageNumbers / 2);
+    const offset = Math.floor(pageNumbers/2);
     let startIndex = this.pageData.page - offset;
 
 

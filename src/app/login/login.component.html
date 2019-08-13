@@ -1,13 +1,14 @@
 <div class="border border-secondary rounded h-25 d-inline-block align-middle mw-200">
-<form>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="login">Login</label>
-    <input class="form-control" id="login" placeholder="Enter login">
+    <input class="form-control" id="login" placeholder="Enter login" formControlName="login">
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password">
+    <input type="password" class="form-control" id="password" placeholder="Password"  formControlName="password">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
+  <p>{{login.value}}</p>
 </form>
 </div>
