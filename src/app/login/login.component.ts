@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/login/login.service';
+import {IUser} from '../models/user-interface';
+import {USERS} from '../mockes-data/users';
 
 @Component({
   selector: 'app-login',
@@ -7,16 +11,33 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  users: IUser[] = USERS;
+  user: IUser;
+  isSubmitted = false;
+  loginForm: FormGroup;
+  constructor(
+    private loginService: LoginService, private router: Router, private formBuilder: FormBuilder ) {}
 
-  constructor() {}
-
-  loginForm = new FormGroup({
-        login: new FormControl(''),
-        password: new FormControl(''),
+  ngOnInit() {
+    this.loginForm  =  this.formBuilder.group({
+      login: ['', Validators.required],
+      password: ['', Validators.required]
     });
-
-  onSubmit() {
-    alert('tgsrg');
   }
-  ngOnInit() {}
+
+  get formControls() { return this.loginForm.controls; }
+
+  onLoginSubmit() {
+    if (this.users.some(user => user.login === this.loginForm.value.login && user.password === this.loginForm.value.password)) {
+      console.log(this.loginForm.value.login);
+      this.isSubmitted = true;
+      if (this.loginForm.invalid) {
+      return;
+    }
+      this.loginService.login(this.loginForm.value);
+      this.router.navigateByUrl('/votes');
+  } else {
+      alert('no such user')
+    }
+  }
 }

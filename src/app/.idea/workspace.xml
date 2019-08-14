@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="579ad546-6492-40c0-af99-d2810b8ece12" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mockes-data/votes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mockes-data/votes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/page-interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/page-interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user-interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/user-interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/vote-interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/vote-interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/share/paginator/paginator.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/share/paginator/paginator.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/share/paginator/paginator.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/share/paginator/paginator.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/user-profile/user-profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/user-profile/user-profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/users-list/users-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/users-list/users-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/users.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/users.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/users.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/users/users.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/users/users.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/votes/new-vote/new-vote-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/votes/new-vote/new-vote-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/votes/new-vote/new-vote.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/votes/new-vote/new-vote.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/votes/new-vote/new-vote.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/votes/vote-details/vote-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/votes/vote-details/vote-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/votes/vote-details/vote-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/votes/vote-details/vote-details.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/votes/votes.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/votes/votes.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/votes/votes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/votes/votes.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/votes/votes.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/votes/votes.service.ts" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1PQEy82NRdVwb2v8qpF8rRIKD0B" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="579ad546-6492-40c0-af99-d2810b8ece12" name="Default Changelist" comment="" />
+      <created>1565798171528</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565798171528</updated>
+      <workItem from="1565798172746" duration="13000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

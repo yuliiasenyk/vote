@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { IPage } from 'src/app/models/page-interface';
-const MAX_BUTTON_NUMBER = 4;
+const MAX_BUTTON_NUMBER = 3;
 
 @Component({
   selector: 'app-paginator',

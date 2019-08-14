@@ -1,11 +1,11 @@
 <nav> <ul class="pagination justify-content-center">
   <li>
-    <button (click)="pageClicked(initialPage)" class="page-link">Fist</button>
+    <button (click)="pageClicked(initialPage)" [disabled]="pageData.page === initialPage" class="page-link">First</button>
   </li>
   <li  *ngFor="let page of arrayOfPageNumbers">
-    <button (click)="pageClicked(page)" class="page-link" [ngClass]="{active: pageData.page === page}">{{page}}</button>
+    <button (click)="pageClicked(page)" class="page-link" [disabled]="pageData.page === page" [ngClass]="{active: pageData.page === page}">{{page}}</button>
   </li>
   <li>
-    <button (click)="pageClicked(pageData.totalPages)" class="page-link">Last</button>
+    <button (click)="pageClicked(pageData.totalPages)"  class="page-link">Last</button>
   </li>
 </ul> </nav>

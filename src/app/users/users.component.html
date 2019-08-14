@@ -6,8 +6,10 @@
       [users]="users"
       (userSelected)="userSelected($event)"
     ></app-users-list>
-    <app-paginator></app-paginator>
-  </div>
+    <app-paginator
+      [pageData]="pageOfUsers"
+      (pageSelected)="pageSelected($event)"
+    ></app-paginator>  </div>
 
   <div class="col-sm-6">
     <app-user-profile

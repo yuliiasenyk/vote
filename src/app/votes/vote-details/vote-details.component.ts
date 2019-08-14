@@ -1,7 +1,5 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {IVote} from '../../models/vote-interface';
-import { USERS } from 'src/app/mockes-data/users'; // temporary
-import { IUser } from '../../models/user-interface'; // temporary
 import { FormBuilder, Validators, FormArray, FormGroup  } from '@angular/forms';
 import { VOTES } from 'src/app/mockes-data/votes';
 
@@ -13,7 +11,8 @@ import { VOTES } from 'src/app/mockes-data/votes';
 
 export class VoteDetailsComponent implements OnInit, OnChanges {
   @Input() currentVote: IVote;
-  public user: IUser;   // temporary
+  editFieldOpen: boolean;
+  editButton: 'Edit' | 'Cancel';
   editingForm: FormGroup;
   votingForm: FormGroup;
   options: FormArray;
@@ -22,8 +21,9 @@ export class VoteDetailsComponent implements OnInit, OnChanges {
   constructor(public fb: FormBuilder) { }
 
   ngOnInit() {
+    this.editFieldOpen = false;
+    this.editButton = 'Edit';
     this.votes = VOTES;
-    this.user = USERS[0]; // temporary
     this. votingForm = this.fb.group({
       currentVote: ['currentVote.options[0]']
     })
@@ -34,7 +34,10 @@ export class VoteDetailsComponent implements OnInit, OnChanges {
       options: this.fb.array([ this.createItem() ]),
     });
   }
-
+  editVote() {
+    this.editFieldOpen = !this.editFieldOpen;
+    if (this.editButton === 'Edit') {this.editButton = 'Cancel'} else {this.editButton = 'Edit'};
+  }
   createItem(): FormGroup {
     return this.fb.group({
       option: ''
@@ -50,11 +53,11 @@ export class VoteDetailsComponent implements OnInit, OnChanges {
     console.log(`you voted for ${this.votingForm.value}`);
   }
 
-  onEdit(data) {
+  onEdit(editFormData) {
     console.log(`form is saved`);
-    this.currentVote.name = data.name;
-    this.currentVote.description = data.description;
-    this.currentVote.options = data.options;
+    this.currentVote.name = editFormData.name;
+    this.currentVote.description = editFormData.description;
+    this.currentVote.options = editFormData.options;
   }
 
   ngOnChanges(): void {

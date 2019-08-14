@@ -1,1 +1,6 @@
- <p>Profile info of a user</p>
+<h3>{{ currentUser.name }}</h3>
+<p *ngIf="currentUser.isAdmin === true; else elseBlock">ADMIN</p>
+<ng-template #elseBlock>Ordinary user</ng-template>
+<p>{{ currentUser.description }}</p>
+<p>{{ currentUser.status }}</p>
+<button class=""btn btn-secondary>Change Password</button>

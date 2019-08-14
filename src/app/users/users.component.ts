@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/models/user-interface';
+import { IUser, IPagedUser } from 'src/app/models/user-interface';
 import {UsersService} from '../users/users.service';
+import {IPage} from '../models/page-interface';
 
 
 @Component({
@@ -12,14 +13,16 @@ import {UsersService} from '../users/users.service';
 export class UsersComponent implements OnInit {
   users: IUser[];
   currentUser: IUser;
+  pageOfUsers: IPage;
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.usersService.getUsersData().subscribe((users: IUser[]) => {
-      this.users = users;
-      if (Array.isArray(users) && users.length) {
-        this.currentUser = users[3];
+    this.usersService.getUsersData().subscribe((pagedUser: IPagedUser) => {
+      this.users = pagedUser.data;
+      this.pageOfUsers = pagedUser.pageData;
+      if (Array.isArray(this.users) && this.users.length) {
+        this.currentUser = this.users[2];
       }
     });
   }
@@ -27,7 +30,10 @@ export class UsersComponent implements OnInit {
     console.log('addNewUser clicked');
   }
   userSelected(user: IUser): void {
-    console.log(`details about ${user.name} are open`);
+    this.currentUser = user;
+  }
+  pageSelected(page: number): void {
+    console.log(`page ${page} is clicked`);
   }
 }
 

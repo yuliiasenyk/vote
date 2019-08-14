@@ -33,10 +33,10 @@ export const VOTES: IVote[] = [
     id: 4,
     name: 'Fav season',
     description: 'pick up your fav season',
-    state: 'active',
+    state: 'draft',
     options: ['Spring', 'Summer', 'Fall', 'winter'],
     startDate: new Date('December 17, 2018').toLocaleDateString(),
-    endDate: 'ongoing',
+    endDate: '',
   },
 ]
 

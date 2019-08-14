@@ -1,48 +1,72 @@
-<div *ngIf="user.isAdmin === true">
+<button type="button" class="btn btn-secondary" (click)="editVote()">{{editButton}}</button>
 
-  <form [formGroup]="editingForm" (ngSubmit)="onEdit(editingForm.value)">
-    <input formControlName="name" [id]="currentVote.name" [value]="currentVote.name">
-    <br>
-    <textarea formControlName="description" [value]="currentVote.description" rows="3" cols="53"></textarea>
-    <h5>Options</h5>
-    <button type="button" (click)="addNewOption()">Add option</button>
-    <div formArrayName="options" *ngFor="let option of currentVote.options">
-      <input [value]="option" [name]="currentVote.name" >
-      <button type="button" (click)="deleteOption($event, option)">Delete option</button>
-    </div>
-    <button type="submit" class="btn btn-danger btn-lg btn-block">Save changes</button>
-  </form>
 
+
+<form *ngIf="editFieldOpen" [formGroup]="editingForm" (ngSubmit)="onEdit(editingForm.value)">
+  <input formControlName="name" [id]="currentVote.name" [value]="currentVote.name">
   <br>
+  <textarea formControlName="description" [value]="currentVote.description" rows="3" cols="53"></textarea>
+  <h5>Options</h5>
+  <button type="button" (click)="addNewOption()">Add option</button>
+  <div formArrayName="options" *ngFor="let option of currentVote.options">
+    <input [value]="option" [name]="currentVote.name" >
+    <button type="button" (click)="deleteOption($event, option)">Delete option</button>
+  </div>
+  <button type="submit" class="btn btn-danger btn-lg btn-block">Save changes</button>
+</form>
+<form [formGroup]="votingForm" (ngSubmit)="onVote()">
+
+  <div *ngIf="editFieldOpen===false">
+<h2>{{ currentVote.name }}</h2>
+<h6>{{ currentVote.state }}</h6>
+<h4>{{ currentVote.description }}</h4>
+
+  <h5>Options</h5>
+  <div *ngFor="let option of currentVote.options">
+    <input [id]="option.name" type="radio"  [value]="option.value" [name]="currentVote.name">
+    <label  [for]="option.name">{{ option }}</label>
+  </div>
+  <h5>Participant</h5>
+  <button type="button" (click)="generateAnonymous()">Generate anonymous</button>
+  <button type="button" (click)="useCurrentAccount()">Use current account</button>
+  <p>Participant nickname</p>
+  <input type="password">
+  <input type="checkbox" id="remember" name="remember" checked>
+  <label for="remember">Remember</label>
+  <button type="submit" class="btn btn-danger btn-lg btn-block" >Vote</button>
+  </div>
+
   <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="seeResults()">Results</button>
   <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="seeParticipantStats()">Participant statistic</button>
+</form>
 
+<br>
+
+<ng-template [ngIf]="currentVote.state === 'active'">
+  <div class="btn-group btn-block" role="group">
+    <button type="button" class="btn btn-danger" (click)="currentVote.state = 'closed'">Stop</button>
+  </div>
+</ng-template>
+<ng-template [ngIf]="currentVote.state === 'draft'">
   <div class="btn-group btn-block" role="group">
     <button type="button" class="btn btn-secondary" (click)="editVote()">Edit</button>
     <button type="button" class="btn btn-secondary" (click)="currentVote.state = 'active'">Run</button>
-    <button type="button" class="btn btn-danger" (click)="currentVote.state = 'closed'">Stop</button>
+    <button type="button" class="btn btn-danger" (click)="currentVote = null">Delete</button>
+  </div>
+</ng-template>
+<ng-template [ngIf]="currentVote.state === 'closed'">
+  <div class="btn-group btn-block" role="group">
+    <button type="button" class="btn btn-secondary" (click)="currentVote.state = 'active'">Run</button>
     <button type="button" class="btn btn-danger" (click)="currentVote = null">Delete</button>
     <button type="button" class="btn btn-danger" (click)="currentVote.state = 'closed'">Archive</button>
   </div>
-</div>
+</ng-template>
+<ng-template [ngIf]="currentVote.state === 'waiting'">
+  <div class="btn-group btn-block" role="group">
+    <button type="button" class="btn btn-secondary" (click)="editVote()">Edit</button>
+    <button type="button" class="btn btn-danger" (click)="currentVote = null">Delete</button>
+  </div>
+</ng-template>
 
-<div *ngIf="user.isAdmin === false">
-  <h3>{{ currentVote.name }}</h3>
-  <p>{{ currentVote.description }}</p>
-  <form [formGroup]="votingForm" (ngSubmit)="onVote()">
-    <h5>Options</h5>
-    <div *ngFor="let option of currentVote.options">
-      <input [id]="option.name" type="radio"  [value]="option.value" [name]="currentVote.name">
-      <label  [for]="option.name">{{ option }}</label>
-    </div>
-    <h5>Participant</h5>
-    <button type="button" (click)="generateAnonymous()">Generate anonymous</button>
-    <button type="button" (click)="useCurrentAccount()">Use current account</button>
-    <p>Participant nickname</p>
-    <input type="password">
-    <input type="checkbox" id="remember" name="remember">
-    <label for="remember">Remember</label>
-    <button type="submit" class="btn btn-danger btn-lg btn-block" checked>Vote</button>
-  </form>
-</div>
-<button (click)="user.isAdmin = !user.isAdmin"> toggle </button>
+
+
