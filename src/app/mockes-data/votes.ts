@@ -40,7 +40,7 @@ export const VOTES: IVote[] = [
   },
 ]
 
-export const INITIAL_VOTES_DATA: IPagedVote = {
-  data: [],
-  pageData: {page: 1, totalPages: 1},
-};
+// export const INITIAL_VOTES_DATA: IPagedVote = {
+//   data: [],
+//   pageData: {page: 1, totalPages: 1},
+// };

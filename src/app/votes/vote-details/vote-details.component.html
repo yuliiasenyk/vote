@@ -8,7 +8,7 @@
     <button type="button" (click)="addNewOption()">Add option</button>
     <div formArrayName="options" *ngFor="let option of currentVote.options">
       <input [value]="option" [name]="currentVote.name" >
-      <button type="button" (click)="deleteOption($event, option)">Delete option</button>
+      <button type="button" (click)="deleteOption($event, option)" class="btn btn-danger">Delete option</button>
     </div>
     <button type="submit" class="btn btn-danger btn-lg btn-block">Save changes</button>
   </form>
@@ -40,7 +40,7 @@
     <button type="button" (click)="useCurrentAccount()">Use current account</button>
     <p>Participant nickname</p>
     <input type="password">
-    <input type="checkbox" id="remember" name="remember">
+    <input type="checkbox" id="remember" name="remember" checked>
     <label for="remember">Remember</label>
     <button type="submit" class="btn btn-danger btn-lg btn-block" checked>Vote</button>
   </form>
