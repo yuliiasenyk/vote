@@ -1,12 +1,14 @@
+<app-navigation></app-navigation>
+
 <div class="d-md-flex h-md-100 align-items-center">
-  <div class="col-sm-6 ">
+  <div class="col-sm-6">
     <button class = "btn btn-dark" (click)="addNewVote()">Add new vote</button>
     <app-votes-list
       [votes]="votes"
       (voteSelected)="voteSelected($event)"
     ></app-votes-list>
     <app-paginator
-      *ngIf="isVoteData"
+      *ngIf="votes.length"
       [pageData]="pageOfVotes"
       (pageSelected)="pageSelected($event)">
     </app-paginator>

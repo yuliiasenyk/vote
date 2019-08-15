@@ -1,5 +1,6 @@
 import { IVote } from '../models/vote-interface';
 import {IPagedVote} from '../models/vote-interface';
+import {PAGE_DATA} from 'src/app/mockes-data/pages';
 
 export const VOTES: IVote[] = [
   {
@@ -33,14 +34,14 @@ export const VOTES: IVote[] = [
     id: 4,
     name: 'Fav season',
     description: 'pick up your fav season',
-    state: 'draft',
+    state: 'active',
     options: ['Spring', 'Summer', 'Fall', 'winter'],
     startDate: new Date('December 17, 2018').toLocaleDateString(),
-    endDate: '',
+    endDate: 'ongoing',
   },
 ]
 
 export const INITIAL_VOTES_DATA: IPagedVote = {
-  data: [],
-  pageData: {page: 1, totalPages: 1},
+  data: VOTES,
+  pageData: PAGE_DATA,
 };

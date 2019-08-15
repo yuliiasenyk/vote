@@ -1,4 +1,5 @@
 import {IPage} from './page-interface';
+import {IUser} from './user-interface';
 
 export interface IUser {
   id: number;
@@ -6,9 +7,10 @@ export interface IUser {
   description: string;
   login: string;
   password: string;
-  status: 'active' | 'blocked' | 'pending';
+  status: string;
   isAdmin: boolean;
 }
+
 export interface IPagedUser {
   data: IUser[];
   pageData: IPage;

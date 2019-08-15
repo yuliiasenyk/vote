@@ -27,7 +27,7 @@ export class NewVoteService  {
   //       id: 1,
   //       name,
   //       description,
-  //       status: 'draft',
+  //       status: 'active',
   //       startDate: new Date().toLocaleDateString(),
   //       endDate: new Date().toLocaleDateString()
   //     });

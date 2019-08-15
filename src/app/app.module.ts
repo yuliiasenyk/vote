@@ -13,8 +13,9 @@ import { VotesComponent } from './votes/votes.component';
 import { VoteDetailsComponent } from './votes/vote-details/vote-details.component';
 import { ParticipantComponent } from './users/participant/participant.component';
 import { PaginatorComponent } from 'src/app/share/paginator/paginator.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NavigationComponent } from './navigation/navigation.component';
+import {PageNotFoundComponent} from 'src/app/share/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,12 +30,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VoteDetailsComponent,
     ParticipantComponent,
     PaginatorComponent,
+    NavigationComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

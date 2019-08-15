@@ -21,5 +21,4 @@ export class LoginService  {
   public logout() {
     localStorage.removeItem('ACCESS_TOKEN');
   }
-  }
-
+}

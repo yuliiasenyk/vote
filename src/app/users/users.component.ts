@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser, IPagedUser } from 'src/app/models/user-interface';
+import { IUser, IPagedUser} from 'src/app/models/user-interface';
 import {UsersService} from '../users/users.service';
 import {IPage} from '../models/page-interface';
+import {IPagedVote} from '../models/vote-interface';
 
 
 @Component({
@@ -22,15 +23,17 @@ export class UsersComponent implements OnInit {
       this.users = pagedUser.data;
       this.pageOfUsers = pagedUser.pageData;
       if (Array.isArray(this.users) && this.users.length) {
-        this.currentUser = this.users[2];
+        this.currentUser = this.users[0];
       }
     });
   }
+
   addNewUser() {
     console.log('addNewUser clicked');
   }
   userSelected(user: IUser): void {
     this.currentUser = user;
+    console.log(`details about ${user.name} are open`);
   }
   pageSelected(page: number): void {
     console.log(`page ${page} is clicked`);

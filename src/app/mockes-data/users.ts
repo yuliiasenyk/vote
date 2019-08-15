@@ -1,4 +1,6 @@
 import { IUser } from '../models/user-interface';
+import {IPagedUser} from '../models/user-interface';
+import {PAGE_DATA} from './pages';
 
 export const USERS: IUser[] = [
   {
@@ -47,3 +49,7 @@ export const USERS: IUser[] = [
     isAdmin: false,
   },
 ];
+export const INITIAL_USERS_DATA: IPagedUser = {
+  data: USERS,
+  pageData: PAGE_DATA,
+};

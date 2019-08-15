@@ -29,15 +29,14 @@ export class LoginComponent implements OnInit {
 
   onLoginSubmit() {
     if (this.users.some(user => user.login === this.loginForm.value.login && user.password === this.loginForm.value.password)) {
-      console.log(this.loginForm.value.login);
       this.isSubmitted = true;
       if (this.loginForm.invalid) {
-      return;
-    }
+        return;
+      }
       this.loginService.login(this.loginForm.value);
       this.router.navigateByUrl('/votes');
-  } else {
-      alert('no such user')
+    } else {
+      alert('no such user');
     }
   }
 }
