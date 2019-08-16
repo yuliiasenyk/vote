@@ -11,6 +11,7 @@ import {IVote} from '../../models/vote-interface';
 export class UsersListComponent implements OnInit {
   @Input() users: IUser[];
   @Output() userSelected = new EventEmitter<IUser>();
+
   constructor() { }
 
   ngOnInit() {

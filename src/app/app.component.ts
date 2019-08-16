@@ -1,5 +1,9 @@
 import { Component, OnInit} from '@angular/core';
-import {LoginService } from 'src/app/login/login.service';
+import {UsersService } from 'src/app/users/users.service';
+import {AuthService} from 'src/app/login/auth.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,7 +11,7 @@ import {LoginService } from 'src/app/login/login.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: AuthService, private router: Router) {
   };
 
   title = 'voting-src';

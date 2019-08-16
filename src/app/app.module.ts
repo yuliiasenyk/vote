@@ -6,7 +6,7 @@ import { UserProfileComponent } from 'src/app/users/user-profile/user-profile.co
 import { NewVoteComponent } from 'src/app/votes/new-vote/new-vote.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { UsersComponent } from './users/users.component';
+import { UsersComponent } from 'src/app/users/users.component';
 import { UsersListComponent } from 'src/app/users/users-list/users-list.component';
 import { UserEditComponent } from 'src/app/users/user-profile/user-edit/user-edit.component';
 import { VotesComponent } from './votes/votes.component';

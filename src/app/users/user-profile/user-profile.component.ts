@@ -1,19 +1,20 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IUser} from '../../models/user-interface';
-
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
   @Input() currentUser: IUser;
+  public blockActivateButton: string;
+  public openStats: boolean;
+
   constructor() { }
 
-  ngOnInit() {}
-
-  addNewUser(): void {
-    console.log('new user will be added');
+  ngOnInit() {
+    this.blockActivateButton = 'change Status';
+    this.openStats = false;
   }
+
 
 }

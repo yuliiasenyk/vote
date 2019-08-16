@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginService } from 'src/app/login/login.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ValidationService } from 'src/app/mockes-data/validation.service';
+import {AuthService} from './auth.service';
 import {IUser} from '../models/user-interface';
-import {USERS} from '../mockes-data/users';
 
 @Component({
   selector: 'app-login',
@@ -11,32 +10,37 @@ import {USERS} from '../mockes-data/users';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  users: IUser[] = USERS;
-  user: IUser;
-  isSubmitted = false;
   loginForm: FormGroup;
+  isSubmitted = false;
   constructor(
-    private loginService: LoginService, private router: Router, private formBuilder: FormBuilder ) {}
+              private formBuilder: FormBuilder,
+              private validation: ValidationService,
+              private authService: AuthService,
+  ) {}
 
   ngOnInit() {
-    this.loginForm  =  this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       login: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  get formControls() { return this.loginForm.controls; }
+  get formControls() {
+    return this.loginForm.controls;
+  }
 
   onLoginSubmit() {
-    if (this.users.some(user => user.login === this.loginForm.value.login && user.password === this.loginForm.value.password)) {
-      this.isSubmitted = true;
-      if (this.loginForm.invalid) {
-        return;
-      }
-      this.loginService.login(this.loginForm.value);
-      this.router.navigateByUrl('/votes');
+    if (this.loginForm.invalid) {
+      return;
     } else {
-      alert('no such user');
+     this.isSubmitted = true;
+     this.validation.validate(this.loginForm.value);
+
+     this.authService.login('', '')
+        .subscribe(
+          (user: IUser) => { console.log(user); },
+          (error: Error) => console.log('ERROR', error),
+        );
     }
   }
 }

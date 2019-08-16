@@ -6,7 +6,7 @@ export interface IUser {
   name: string;
   description: string;
   login: string;
-  password: string;
+  password?: string;
   status: string;
   isAdmin: boolean;
 }

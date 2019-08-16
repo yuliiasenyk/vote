@@ -1,4 +1,7 @@
 <h1 class="text-light bg-dark text-center">
-  Welcome to {{ title }}!
+  {{ title }}
 </h1>
+
+<app-navigation *ngIf="this.router.url !== '/login'"></app-navigation>
+
 <router-outlet> </router-outlet>

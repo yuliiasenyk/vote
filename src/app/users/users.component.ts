@@ -28,15 +28,12 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  addNewUser() {
-    console.log('addNewUser clicked');
-  }
+  addNewUser() {}
+
   userSelected(user: IUser): void {
     this.currentUser = user;
-    console.log(`details about ${user.name} are open`);
   }
   pageSelected(page: number): void {
-    console.log(`page ${page} is clicked`);
   }
 }
 
