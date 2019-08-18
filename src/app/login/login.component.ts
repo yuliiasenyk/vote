@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { ValidationService } from 'src/app/mockes-data/validation.service';
 import {AuthService} from './auth.service';
 import {IUser} from '../models/user-interface';
@@ -10,35 +10,51 @@ import {IUser} from '../models/user-interface';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
   isSubmitted = false;
+  loginForm: FormGroup;
+  login: FormControl;
+  password: FormControl;
+
   constructor(
-              private formBuilder: FormBuilder,
-              private validation: ValidationService,
-              private authService: AuthService,
+    private validation: ValidationService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+    this.createFormControls();
+    this.createForm();
   }
 
-  get formControls() {
-    return this.loginForm.controls;
+  createFormControls() {
+    this.login = new FormControl('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]);
+    this.password = new FormControl('', [
+      Validators.required,
+      Validators.minLength(4)
+    ]);
+  }
+
+  createForm() {
+    this.loginForm = new FormGroup({
+      email: this.login,
+      password: this.password,
+    });
   }
 
   onLoginSubmit() {
     if (this.loginForm.invalid) {
       return;
     } else {
-     this.isSubmitted = true;
-     this.validation.validate(this.loginForm.value);
+      this.isSubmitted = true;
+      this.validation.validate(this.loginForm.value);
 
-     this.authService.login('', '')
+      this.authService.login('', '')
         .subscribe(
-          (user: IUser) => { console.log(user); },
+          (user: IUser) => {
+            console.log(user);
+          },
           (error: Error) => console.log('ERROR', error),
         );
     }
