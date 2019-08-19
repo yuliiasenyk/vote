@@ -1,0 +1,25 @@
+<ng-template [ngIf]="currentVote.state === 'active'">
+  <div class="btn-group btn-block" role="group">
+    <button type="button" class="btn btn-danger" (click)="currentVote.state = 'closed'">Stop</button>
+  </div>
+</ng-template>
+<ng-template [ngIf]="currentVote.state === 'draft'">
+  <div class="btn-group btn-block" role="group">
+    <button type="button" class="btn btn-secondary" (click)="editVoteFormOpen()">Edit</button>
+    <button type="button" class="btn btn-secondary" (click)="currentVote.state = 'active'">Run</button>
+    <button type="button" class="btn btn-danger" (click)="currentVote = null">Delete</button>
+  </div>
+</ng-template>
+<ng-template [ngIf]="currentVote.state === 'closed'">
+  <div class="btn-group btn-block" role="group">
+    <button type="button" class="btn btn-secondary" (click)="currentVote.state = 'active'">Run</button>
+    <button type="button" class="btn btn-danger" (click)="currentVote = null">Delete</button>
+    <button type="button" class="btn btn-danger" (click)="currentVote.state = 'closed'">Archive</button>
+  </div>
+</ng-template>
+<ng-template [ngIf]="currentVote.state === 'waiting'">
+  <div class="btn-group btn-block" role="group">
+    <button type="button" class="btn btn-secondary" (click)="editVoteFormOpen()">Edit</button>
+    <button type="button" class="btn btn-danger" (click)="currentVote = null">Delete</button>
+  </div>
+</ng-template>

@@ -1,0 +1,26 @@
+<form [formGroup]="votingForm" (ngSubmit)="onVote()">
+  <dl>
+    <dt>Name</dt>
+    <dd><h2>{{ currentVote.name }}</h2></dd>
+    <dt>State</dt>
+    <dd>{{ currentVote.state }}</dd>
+    <dt>Description</dt>
+    <dd>{{ currentVote.description }}</dd>
+  </dl>
+
+    <h5>Options</h5>
+    <div *ngFor="let option of currentVote.options">
+      <input id={{option}} type="radio"  value="{{option}}" [name]="currentVote.name" (change)="changeOption($event)">
+      <label  for={{option}}>{{ option }}</label>
+    </div>
+
+    <h5>Participant</h5>
+    <button type="button" (click)="generateAnonymous()">Generate anonymous</button>
+    <button type="button" (click)="useCurrentAccount()">Use current account</button>
+    <p>Participant nickname</p>
+    <input type="password">
+    <input type="checkbox" id="remember" name="remember" checked>
+    <label for="remember">Remember</label>
+
+    <button type="submit" class="btn btn-danger btn-lg btn-block">Vote</button>
+</form>

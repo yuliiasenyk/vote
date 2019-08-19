@@ -1,0 +1,12 @@
+<form [formGroup]="editingForm" (ngSubmit)="onEdit(editingForm.value)">
+  <input formControlName="name" [id]="currentVote.name" [value]="currentVote.name">
+  <br>
+  <textarea formControlName="description" [value]="currentVote.description" rows="3" cols="53"></textarea>
+  <h5>Options</h5>
+  <button type="button" (click)="addNewOption()">Add option</button>
+  <div formArrayName="options" *ngFor="let option of currentVote.options">
+    <input value="{{option}}" [name]="currentVote.name">
+    <button type="button" (click)="deleteOption($event, option)">Delete option</button>
+  </div>
+  <button type="submit" class="btn btn-danger btn-lg btn-block">Save changes</button>
+</form>

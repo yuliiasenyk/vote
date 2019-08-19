@@ -1,24 +1,37 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IVote} from '../../models/vote-interface';
+import { VOTES } from 'src/app/mockes-data/votes';
+import {VoteDetailsService} from './vote-details.service';
 
 @Component({
   selector: 'app-vote-details',
   templateUrl: './vote-details.component.html',
-  styleUrls: ['./vote-details.component.scss']
+  styleUrls: ['./vote-details.component.scss'],
+  providers: [VoteDetailsService],
 })
-export class VoteDetailsComponent implements OnInit, OnChanges {
+
+export class VoteDetailsComponent implements OnInit {
   @Input() currentVote: IVote;
-  constructor() { }
-  ngOnInit() {}
+  editFieldOpen: boolean;
+  editButton: 'Edit' | 'Cancel';
+  public votes: IVote[];
 
-  ngOnChanges(): void {
-    console.log('Votes details', this.currentVote);
+  constructor( private editVoteService: VoteDetailsService) { }
+
+  ngOnInit() {
+    this.editFieldOpen = false;
+    this.editButton = 'Edit';
+    this.votes = VOTES;
   }
-//   seeResults(): void {
-//     console.log('Votes results', this.currentVote);
-//   }
-//   addNewOption(): void {
-//   console.log('new option input should be added');
-// }
 
+  showResults(): void {
+    this.editVoteService.calculateResults();
+  }
+
+  seeParticipantStats(): void {}
+
+  editVoteFormOpen(): void {
+    this.editButton === 'Edit' ? this.editButton = 'Cancel' : this.editButton = 'Edit';
+    this.editFieldOpen = !this.editFieldOpen;
+  }
 }
