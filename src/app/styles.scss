@@ -1,0 +1,8 @@
+@import 'customize-bootstrap.scss';
+@import '../node_modules/bootstrap/scss/bootstrap';
+html {
+  min-height: 100%;
+}
+body {
+  background: linear-gradient(#edf1e9, #293f50);
+}

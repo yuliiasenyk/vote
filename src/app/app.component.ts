@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(private loginService: AuthService, private router: Router) {
   };
 
-  title = 'voting-src';
+  title = 'Vote';
 
   ngOnInit() {
     if (this.loginService.isLoggedIn()) {

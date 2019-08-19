@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import { INITIAL_USERS_DATA } from 'src/app/mockes-data/users';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {IPagedUser } from '../models/user-interface';
+import { IPagedUser } from '../models/user-interface';
 
 @Injectable({providedIn: 'root'})
 
