@@ -17,7 +17,7 @@ export class VotesComponent implements OnInit {
   constructor(private votesService: VotesService) { }
 
   ngOnInit() {
-    this.votesService.getVotesData(this.votes).subscribe((pagedVote: IPagedVote) => {
+    this.votesService.getVotesData().subscribe((pagedVote: IPagedVote) => {
       this.votes = pagedVote.data;
       this.pageOfVotes = pagedVote.pageData;
       if (Array.isArray(this.votes) && this.votes.length) {
@@ -36,6 +36,7 @@ export class VotesComponent implements OnInit {
 
   pageSelected(page: number): void {
     if (page !== this.pageOfVotes.page) {
+      this.votesService.getNewData();
     }
   }
 }

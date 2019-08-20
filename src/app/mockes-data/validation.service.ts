@@ -16,12 +16,11 @@ export class ValidationService {
               private router: Router) {
   }
 
-  validate(value) {
-    // if (this.users.some(user => user.login === login && user.password === password)) {
-      this.loginService.addUserToStorage(value);
-      this.router.navigateByUrl('/votes');
-    // } else {
-    //   alert('no such user');
-    // }
-  }
+  // validate(value) {
+  //   if (this.users.some(user => user.login === login && user.password === password)) {
+  //   console.log('user exists');
+  // } else {
+  //   console.log('no such user');
+  // }
+  // }
 }

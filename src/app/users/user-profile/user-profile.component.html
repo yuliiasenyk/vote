@@ -1,0 +1,30 @@
+<div class="container">
+  <table class="table bg-gradient-secondary table-bordered table-hover mt-5">
+    <tbody>
+    <tr>
+      <th>Name</th>
+      <td><h3>{{ currentUser.name }} <span *ngIf="currentUser.isAdmin" class="badge badge-info">Admin</span></h3></td>
+    </tr>
+    <tr >
+      <th>Description</th>
+      <td>{{ currentUser.description }}</td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>{{ currentUser.status }}</td>
+    </tr>
+    <tr *ngIf="!currentUser.isAdmin">
+      <th>Permissions</th>
+      <td>No permissions</td>
+    </tr>
+    </tbody>
+  </table>
+
+<button class="btn btn-secondary" (click)="changePasswordClicked()">Change Password</button>
+<button class="btn btn-secondary" (click)="changeStatusClicked()">{{blockActivateButton}}</button>
+<button class="btn btn-secondary" (click)="showStatsClicked()">Statistic</button>
+<br>
+<div>
+  <p *ngIf="openStats">No statistics yet</p>
+</div>
+</div>

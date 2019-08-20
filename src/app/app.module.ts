@@ -16,6 +16,9 @@ import { PaginatorComponent } from 'src/app/share/paginator/paginator.component'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import {PageNotFoundComponent} from 'src/app/share/page-not-found.component';
+import { FormToVoteComponent } from './votes/vote-details/form-to-vote/form-to-vote.component';
+import { FormToEditVoteComponent } from './votes/vote-details/form-to-edit-vote/form-to-edit-vote.component';
+import { VoteControlButtonsComponent } from './votes/vote-details/vote-control-buttons/vote-control-buttons.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,10 @@ import {PageNotFoundComponent} from 'src/app/share/page-not-found.component';
     ParticipantComponent,
     PaginatorComponent,
     NavigationComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FormToVoteComponent,
+    FormToEditVoteComponent,
+    VoteControlButtonsComponent
   ],
   imports: [
     BrowserModule,

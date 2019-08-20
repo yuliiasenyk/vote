@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import {UsersService } from 'src/app/users/users.service';
 import {AuthService} from 'src/app/login/auth.service';
 import { Router } from '@angular/router';
 
@@ -11,8 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private loginService: AuthService, private router: Router) {
-  };
+  constructor(private loginService: AuthService, private router: Router) {}
 
   title = 'Vote';
 
