@@ -19,6 +19,7 @@ import {PageNotFoundComponent} from 'src/app/share/page-not-found.component';
 import { FormToVoteComponent } from './votes/vote-details/form-to-vote/form-to-vote.component';
 import { FormToEditVoteComponent } from './votes/vote-details/form-to-edit-vote/form-to-edit-vote.component';
 import { VoteControlButtonsComponent } from './votes/vote-details/vote-control-buttons/vote-control-buttons.component';
+import { ModalPasswordComponent } from './users/user-profile/modal-password/modal-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { VoteControlButtonsComponent } from './votes/vote-details/vote-control-b
     PageNotFoundComponent,
     FormToVoteComponent,
     FormToEditVoteComponent,
-    VoteControlButtonsComponent
+    VoteControlButtonsComponent,
+    ModalPasswordComponent
   ],
   imports: [
     BrowserModule,

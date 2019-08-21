@@ -1,6 +1,6 @@
 <nav> <ul class="pagination justify-content-center">
   <li>
-    <button (click)="pageClicked(initialPage)" [disabled]="pageData.page === initialPage" class="page-link">First</button>
+    <button (click)="pageClicked(initialPage)" [disabled]="pageData.page === initialPage" class="page-link">Fist</button>
   </li>
   <li  *ngFor="let page of arrayOfPageNumbers">
     <button (click)="pageClicked(page)" class="page-link" [disabled]="pageData.page === page">{{page}}</button>
