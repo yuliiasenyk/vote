@@ -7,7 +7,7 @@ export interface IUser {
   description: string;
   login: string;
   password?: string;
-  status: string;
+  status: 'active' | 'blocked' | 'pending';
   isAdmin: boolean;
 }
 

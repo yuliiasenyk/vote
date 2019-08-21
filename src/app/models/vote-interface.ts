@@ -4,7 +4,7 @@ export interface IVote {
   id: number;
   name: string;
   description: string;
-  state: string;
+  state: 'draft' | 'active' | 'closed' | 'archived' | 'waiting' | 'deleted';
   options: any[];
   startDate?: string;
   endDate?: string;

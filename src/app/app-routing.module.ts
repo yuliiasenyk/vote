@@ -7,7 +7,7 @@ import { AuthGuard } from './auth.guard';
 import {PageNotFoundComponent} from 'src/app/share/page-not-found.component';
 
 const appRoutes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'login'},
+  {path: '', pathMatch: 'full', redirectTo: 'votes'},
   {path: 'login', component: LoginComponent},
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
   {path: 'votes', component: VotesComponent, canActivate: [AuthGuard]},

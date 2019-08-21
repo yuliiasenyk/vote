@@ -30,7 +30,7 @@ export class VoteDetailsComponent implements OnInit {
 
   seeParticipantStats(): void {}
 
-  editVoteFormOpen(): void {
+  editVoteFormOpenToggle(): void {
     this.editButton === 'Edit' ? this.editButton = 'Cancel' : this.editButton = 'Edit';
     this.editFieldOpen = !this.editFieldOpen;
   }

@@ -18,4 +18,7 @@ export class VoteControlButtonsComponent implements OnInit {
     this.votes = VOTES;
   }
 
+  public deleteVote(event, vote): void {
+    this.votes.splice(this.votes.indexOf(vote), 1);
+  }
 }

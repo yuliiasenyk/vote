@@ -1,27 +1,38 @@
 <form [formGroup]="votingForm" (ngSubmit)="onVote()">
-  <dl class="text-dark">
+  <dl>
     <dt>Name</dt>
-    <dd><h2 class="font-weight-bold">{{ currentVote.name }}</h2></dd>
+    <dd><h2 class="font-weight-bold text-primary">{{ currentVote.name }}</h2></dd>
     <dt>State</dt>
-    <dd class="lead font-weight-bold">{{ currentVote.state }}</dd>
+    <dd class="font-weight-bold  text-primary">{{ currentVote.state }}</dd>
     <dt>Description</dt>
-    <dd class="lead font-weight-bold">{{ currentVote.description }}</dd>
+    <dd class="lead font-weight-bold  text-primary">{{ currentVote.description }}</dd>
   </dl>
 
-    <h5>Options</h5>
-    <div *ngFor="let option of currentVote.options">
-      <input id={{option}} type="radio"  value="{{option}}" [name]="currentVote.name" (change)="changeOption($event)">
-      <label class="lead font-weight-bold" for={{option}}>{{ option }}</label>
-    </div>
-
-    <h5>Participant</h5>
-    <button  class="btn btn-secondary" type="button" (click)="generateAnonymous()">Generate anonymous</button>
-    <button  class="btn btn-secondary" type="button" (click)="useCurrentAccount()">Use current account</button>
-    <h5>Participant nickname</h5>
-  <div class="row">
-    <input type="password" class="form-control col-sm-3 ml-3">
-    <input type="checkbox" id="remember" name="remember" checked>
-    <label class="font-weight-bold" for="remember">Remember</label>
+  <h5>Options</h5>
+  <div *ngFor="let option of currentVote.options">
+    <label class="lead font-weight-bold" for={{option}}>
+      <input
+        *ngIf="currentVote.state === 'active'"
+        id={{option}} type="radio"
+        value="{{option}}"
+        [name]="currentVote.name"
+        (change)="changeOption($event)">
+      {{ option }}
+    </label>
   </div>
+
+  <div *ngIf="currentVote.state === 'active'">
+    <div *ngIf="false">
+      <h5>Participant</h5>
+      <button  class="btn btn-secondary" type="button" (click)="generateAnonymous()">Generate anonymous</button>
+      <button  class="btn btn-secondary" type="button" (click)="useCurrentAccount()">Use current account</button>
+      <h5>Participant nickname</h5>
+      <div class="row">
+        <input type="password" class="form-control col-sm-3 ml-3">
+        <input type="checkbox" id="remember" name="remember" checked>
+        <label class="font-weight-bold" for="remember">Remember</label>
+      </div>
+    </div>
     <button type="submit" class="btn btn-secondary btn-lg btn-block">Vote</button>
+  </div>
 </form>

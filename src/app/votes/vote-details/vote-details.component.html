@@ -1,9 +1,16 @@
-<button type="button" class="btn btn-lg btn-secondary float-right" (click)="editVoteFormOpen()">{{editButton}}</button>
+<button type="button"
+        class="btn btn-lg btn-secondary text-light float-right"
+        (click)="editVoteFormOpenToggle()"
+        *ngIf="currentVote.state !== 'active' && currentVote.state !== 'archived'">
+  {{editButton}}
+</button>
 
 <app-form-to-edit-vote *ngIf="editFieldOpen" [currentVote]="currentVote"></app-form-to-edit-vote>
 <app-form-to-vote *ngIf="!editFieldOpen" [currentVote]="currentVote"> </app-form-to-vote>
 
+<div *ngIf="currentVote.state === 'closed' || currentVote.state === 'archived'">
 <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="showResults()">Results</button>
 <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="seeParticipantStats()">Participant statistic</button>
-
+</div>
+<br>
 <app-vote-control-buttons [currentVote]="currentVote"> </app-vote-control-buttons>

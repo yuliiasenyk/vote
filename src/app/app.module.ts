@@ -15,11 +15,11 @@ import { ParticipantComponent } from './users/participant/participant.component'
 import { PaginatorComponent } from 'src/app/share/paginator/paginator.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
-import {PageNotFoundComponent} from 'src/app/share/page-not-found.component';
+import { PageNotFoundComponent } from 'src/app/share/page-not-found.component';
 import { FormToVoteComponent } from './votes/vote-details/form-to-vote/form-to-vote.component';
 import { FormToEditVoteComponent } from './votes/vote-details/form-to-edit-vote/form-to-edit-vote.component';
 import { VoteControlButtonsComponent } from './votes/vote-details/vote-control-buttons/vote-control-buttons.component';
-import { ModalPasswordComponent } from './users/user-profile/modal-password/modal-password.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +38,7 @@ import { ModalPasswordComponent } from './users/user-profile/modal-password/moda
     PageNotFoundComponent,
     FormToVoteComponent,
     FormToEditVoteComponent,
-    VoteControlButtonsComponent,
-    ModalPasswordComponent
+    VoteControlButtonsComponent
   ],
   imports: [
     BrowserModule,

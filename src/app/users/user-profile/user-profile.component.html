@@ -20,11 +20,11 @@
     </tbody>
   </table>
 
-<button class="btn btn-secondary" (click)="changePasswordClicked()">Change Password</button>
-<button class="btn btn-secondary" (click)="changeStatusClicked()">{{blockActivateButton}}</button>
-<button class="btn btn-secondary" (click)="showStatsClicked()">Statistic</button>
-<br>
-<div>
-  <p *ngIf="openStats">No statistics yet</p>
-</div>
+  <button class="btn btn-secondary btn-outline-primary text-light" (click)="changePasswordClicked()">Change Password</button>
+  <button class="btn btn-secondary btn-outline-primary text-light m-1" (click)="changeStatusClicked()">{{blockActivateButton}}</button>
+  <button class="btn btn-secondary btn-outline-primary text-light" (click)="showStatsClicked()">Statistic</button>
+  <br>
+  <div>
+    <p *ngIf="openStats">No statistics yet</p>
+  </div>
 </div>

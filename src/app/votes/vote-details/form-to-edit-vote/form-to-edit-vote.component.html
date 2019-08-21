@@ -1,12 +1,17 @@
 <form [formGroup]="editingForm" (ngSubmit)="onEdit(editingForm.value)">
-  <input formControlName="name" [id]="currentVote.name" [value]="currentVote.name">
-  <br>
-  <textarea formControlName="description" [value]="currentVote.description" rows="3" cols="53"></textarea>
-  <h5>Options</h5>
-  <button type="button" (click)="addNewOption()">Add option</button>
-  <div formArrayName="options" *ngFor="let option of currentVote.options">
-    <input value="{{option}}" [name]="currentVote.name">
-    <button type="button" (click)="deleteOption($event, option)">Delete option</button>
+  <p class="font-weight-bold text-primary">Name</p>
+  <input formControlName="name" class="form-control col-sm-5" [value]="currentVote.name">
+  <p class="font-weight-bold text-primary">Description</p>
+  <textarea formControlName="description" class="form-control col-sm-10" [value]="currentVote.description" rows="3"></textarea>
+  <h5 class="text-primary">Options</h5>
+  <button type="button" class="col-sm-3 btn btn-secondary text-light font-weight-bold" (click)="addNewOption()">Add option</button>
+  <div class="container row" formArrayName="options" *ngFor="let option of currentVote.options">
+    <input class="col-sm-5 form-control" value="{{option}}" [name]="currentVote.name" >
+    <button
+      class="col-sm-3 btn btn-secondary text-light"
+      type="button"
+      (click)="deleteOption($event, option)">
+      Delete option</button>
   </div>
-  <button type="submit" class="btn btn-danger btn-lg btn-block">Save changes</button>
+  <button type="submit" class="btn btn-secondary btn-lg btn-block mt-2 text-light font-weight-bold">Save changes</button>
 </form>

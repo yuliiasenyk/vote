@@ -1,6 +1,6 @@
 import { IUser } from '../models/user-interface';
 import {IPagedUser} from '../models/user-interface';
-import {PAGE_DATA} from './pages';
+import {PAGE_DATA, PAGE_DATA2} from './pages';
 
 export const USERS: IUser[] = [
   {
@@ -40,11 +40,36 @@ export const USERS: IUser[] = [
     name: 'Evo',
     description: 'some description',
     login: 'Evo',
-    status: 'active',
+    status: 'blocked',
     isAdmin: false,
   },
 ];
+
+export const USERS2: IUser[] = [
+  {
+    id: 6,
+    name: 'Anna',
+    description: 'some description',
+    login: 'Anna',
+    status: 'active',
+    isAdmin: false,
+  },
+  {
+    id: 7,
+    name: 'Vova',
+    description: 'some description',
+    login: 'Vova',
+    status: 'pending',
+    isAdmin: false,
+  },
+];
+
 export const INITIAL_USERS_DATA: IPagedUser = {
   data: USERS,
   pageData: PAGE_DATA,
+};
+
+export const SECOND_USERS_DATA: IPagedUser = {
+  data: USERS2,
+  pageData: PAGE_DATA2,
 };

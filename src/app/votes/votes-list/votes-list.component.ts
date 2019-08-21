@@ -10,6 +10,7 @@ import {IVote} from '../../models/vote-interface';
 export class VotesListComponent implements OnInit {
   @Input() votes: IVote[];
   @Output() voteSelected = new EventEmitter<IVote>();
+  @Input() currentVote: IVote;
 
   constructor() {}
 
@@ -18,6 +19,8 @@ export class VotesListComponent implements OnInit {
   rowClicked(vote: IVote): void {
     this.voteSelected.emit(vote);
   }
+
+
 }
 
 

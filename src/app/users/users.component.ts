@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser, IPagedUser} from 'src/app/models/user-interface';
-import {UsersService} from '../users/users.service';
+import {UsersService} from './users.service';
 import {IPage} from '../models/page-interface';
-import {IPagedVote} from '../models/vote-interface';
-
 
 @Component({
   selector: 'app-users',
@@ -33,7 +31,11 @@ export class UsersComponent implements OnInit {
   userSelected(user: IUser): void {
     this.currentUser = user;
   }
+
   pageSelected(page: number): void {
+    if (page !== this.pageOfUsers.page) {
+      this.usersService.getAnotherPage(page);
+    }
   }
 }
 

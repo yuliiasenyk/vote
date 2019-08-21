@@ -10,7 +10,7 @@
         <div class="form-control-feedback"
              *ngIf="login.errors && (login.dirty || login.touched)">
           <p *ngIf="login.errors.required">Login is required</p>
-          <p *ngIf="login.errors.minlength">The login address must contain at least 3 characters</p>
+          <p *ngIf="login.errors.minlength">Login must contain at least 3 characters</p>
         </div>
       </div>
 

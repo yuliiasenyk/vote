@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IVote} from '../../../models/vote-interface';
-import {VoteDetailsService} from '../vote-details.service';
 
 @Component({
   selector: 'app-form-to-edit-vote',
@@ -17,8 +16,8 @@ export class FormToEditVoteComponent implements OnInit {
 
   ngOnInit() {
     this.editingForm = this.fb.group({
-      name: ['', Validators.required],
-      description: [''],
+      name: [this.currentVote.name, Validators.required],
+      description: [this.currentVote.description],
       options: this.fb.array([ this.createNewOption() ]),
     });
   }

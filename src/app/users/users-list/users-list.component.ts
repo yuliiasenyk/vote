@@ -1,7 +1,5 @@
-import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {IUser} from '../../models/user-interface';
-import {IVote} from '../../models/vote-interface';
-
 
 @Component({
   selector: 'app-users-list',
@@ -11,11 +9,12 @@ import {IVote} from '../../models/vote-interface';
 export class UsersListComponent implements OnInit {
   @Input() users: IUser[];
   @Output() userSelected = new EventEmitter<IUser>();
+  @Input() currentUser: IUser;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   rowClicked(user: IUser): void {
     this.userSelected.emit(user);
   }
