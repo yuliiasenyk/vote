@@ -9,6 +9,7 @@ import {AuthService} from '../login/auth.service';
 export class NavigationComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
+
   logoutClick() {
     this.authService.logout();
   }

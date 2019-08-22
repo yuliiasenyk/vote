@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {IPagedVote} from '../models/vote-interface';
-import {INITIAL_VOTES_DATA, SECOND_VOTES_DATA} from '../mockes-data/votes';
+import {INITIAL_VOTES_DATA, SECOND_VOTES_DATA} from '../mock-data/votes';
 
 @Injectable()
 export class VotesService  {
@@ -10,7 +10,7 @@ export class VotesService  {
     return  this.behaviorSubject.asObservable();
   }
 
-getAnotherPage(page) {
+getPage(page) {
     if (page === undefined || page === 1) {
       this.behaviorSubject.next(INITIAL_VOTES_DATA);
     } else {

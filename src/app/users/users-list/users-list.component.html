@@ -13,8 +13,8 @@
       <th>{{user.name}}</th>
       <td>{{user.description}}</td>
       <td>{{user.status}}</td>
-      <td *ngIf="user.isAdmin">Admin</td>
-      <td *ngIf="!user.isAdmin">No permissions</td>
+      <td *ngIf="user.permissions">YES</td>
+      <td *ngIf="!user.permissions">No permissions</td>
     </tr>
     </tbody>
   </table>

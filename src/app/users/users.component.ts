@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { IUser, IPagedUser} from 'src/app/models/user-interface';
 import {UsersService} from './users.service';
 import {IPage} from '../models/page-interface';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -9,15 +10,16 @@ import {IPage} from '../models/page-interface';
   styleUrls: ['./users.component.scss'],
   providers: [UsersService],
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
   users: IUser[];
   currentUser: IUser;
   pageOfUsers: IPage;
+  public dataSubscription: Subscription;
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.usersService.getUsersData().subscribe((pagedUser: IPagedUser) => {
+    this.dataSubscription = this.usersService.getUsersData().subscribe((pagedUser: IPagedUser) => {
       this.users = pagedUser.data;
       this.pageOfUsers = pagedUser.pageData;
       if (Array.isArray(this.users) && this.users.length) {
@@ -26,7 +28,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  addNewUser() {}
+  addNewUserClicked() {}
 
   userSelected(user: IUser): void {
     this.currentUser = user;
@@ -34,7 +36,12 @@ export class UsersComponent implements OnInit {
 
   pageSelected(page: number): void {
     if (page !== this.pageOfUsers.page) {
-      this.usersService.getAnotherPage(page);
+      this.usersService.getPage(page);
+    }
+  }
+  ngOnDestroy() {
+    if (this.dataSubscription) {
+      this.dataSubscription.unsubscribe();
     }
   }
 }

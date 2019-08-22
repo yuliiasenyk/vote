@@ -2,13 +2,14 @@
 
 <div class="d-md-flex mt-4 align-items-start">
   <div class="col-sm-6">
-    <button class = "btn btn-primary mb-2" (click)="addNewUser()">New user</button>
+    <button class="btn btn-primary mb-2 disabled" (click)="addNewUserClicked()">New user</button>
 
     <app-users-list
       [users]="users"
       (userSelected)="userSelected($event)"
       [currentUser]="currentUser"
     ></app-users-list>
+
     <app-paginator
       *ngIf="users.length"
       [pageData]="pageOfUsers"

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IVote} from '../../../models/vote-interface';
+import {IVote, VoteState} from '../../../models/vote-interface';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -9,7 +9,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class FormToVoteComponent implements OnInit {
   @Input() currentVote: IVote;
-  choice: string;
+  public choice: string;
+  public voteState = VoteState;
   votingForm: FormGroup;
 
   constructor(public fb: FormBuilder) { }
@@ -23,7 +24,7 @@ export class FormToVoteComponent implements OnInit {
     this.choice = event.target.value;
   }
   onVote(): void {
-    console.log(this.choice);
+    this.currentVote.description = `you have selected ${this.choice}`;
   }
 
   generateAnonymous(): void {}

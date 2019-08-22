@@ -13,18 +13,22 @@
       <th>Status</th>
       <td>{{ currentUser.status }}</td>
     </tr>
-    <tr *ngIf="!currentUser.isAdmin">
+    <tr *ngIf="!currentUser.permissions">
       <th>Permissions</th>
-      <td>No permissions</td>
+      <td>NO</td>
+    </tr>
+    <tr *ngIf="currentUser.permissions">
+      <th>Permissions</th>
+      <td>YES</td>
     </tr>
     </tbody>
   </table>
 
-  <button class="btn btn-secondary btn-outline-primary text-light" (click)="changePasswordClicked()">Change Password</button>
-  <button class="btn btn-secondary btn-outline-primary text-light m-1" (click)="changeStatusClicked()">{{blockActivateButton}}</button>
-  <button class="btn btn-secondary btn-outline-primary text-light" (click)="showStatsClicked()">Statistic</button>
-  <br>
-  <div>
-    <p *ngIf="openStats">No statistics yet</p>
-  </div>
+  <button class="btn btn-secondary btn-outline-primary text-light m-1" (click)="changePasswordClicked()">Change Password</button>
+  <select class="btn btn-secondary btn-outline-primary text-light m-1" [value]="currentUser.status" #status (change)="changeStatusClicked(status.value, currentUser)">
+    <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+  </select>
+  <button class="btn btn-secondary btn-outline-primary text-light m-1" (click)="showStatsClicked()">Statistic</button>
+  <p *ngIf="openStats" class="text-light">No statistics yet</p>
+
 </div>

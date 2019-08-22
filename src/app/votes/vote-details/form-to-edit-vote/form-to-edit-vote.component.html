@@ -1,17 +1,27 @@
 <form [formGroup]="editingForm" (ngSubmit)="onEdit(editingForm.value)">
   <p class="font-weight-bold text-primary">Name</p>
   <input formControlName="name" class="form-control col-sm-5" [value]="currentVote.name">
+  <div class="form-control-feedback"
+       *ngIf="name.errors && (name.dirty || name.touched)">
+    <p *ngIf="name.errors.required">Name is required</p>
+  </div>
   <p class="font-weight-bold text-primary">Description</p>
   <textarea formControlName="description" class="form-control col-sm-10" [value]="currentVote.description" rows="3"></textarea>
+
   <h5 class="text-primary">Options</h5>
   <button type="button" class="col-sm-3 btn btn-secondary text-light font-weight-bold" (click)="addNewOption()">Add option</button>
   <div class="container row" formArrayName="options" *ngFor="let option of currentVote.options">
-    <input class="col-sm-5 form-control" value="{{option}}" [name]="currentVote.name" >
+
+    <input class="col-sm-5 form-control" value="{{option}}" [name]="currentVote.name">
+
     <button
       class="col-sm-3 btn btn-secondary text-light"
       type="button"
-      (click)="deleteOption($event, option)">
+      (click)="deleteOption(option)">
       Delete option</button>
   </div>
-  <button type="submit" class="btn btn-secondary btn-lg btn-block mt-2 text-light font-weight-bold">Save changes</button>
+
+  <button type="submit" [disabled]="!editingForm.valid"
+          class="btn btn-secondary btn-lg btn-block mt-2 text-light btn-outline-primary font-weight-bold">
+    Save changes</button>
 </form>

@@ -1,28 +1,28 @@
-<ng-template [ngIf]="currentVote.state === 'active'">
+  <ng-template [ngIf]="currentVote.state === voteState.active">
   <div class="btn-group btn-block" role="group">
-    <button type="button" class="btn btn-danger" (click)="currentVote.state = 'closed'">Stop</button>
+    <button type="button" class="btn btn-danger text-light" (click)="currentVote.state = voteState.closed">Stop</button>
   </div>
 </ng-template>
-<ng-template [ngIf]="currentVote.state === 'draft'">
+<ng-template [ngIf]="currentVote.state === voteState.draft">
   <div class="btn-group btn-block" role="group">
-    <button type="button" class="btn btn-danger" (click)="deleteVote($event, currentVote)">Delete</button>
+    <button type="button" class="btn btn-danger text-light " (click)="deleteVote(currentVote)">Delete</button>
   </div>
 </ng-template>
-<ng-template [ngIf]="currentVote.state === 'closed'">
+<ng-template [ngIf]="currentVote.state === voteState.closed">
   <div class="btn-group btn-block" role="group">
-    <button type="button" class="btn btn-secondary" (click)="currentVote.state = 'active'">Restart</button>
-    <button type="button" class="btn btn-danger" (click)="deleteVote($event, currentVote)">Delete</button>
-    <button type="button" class="btn btn-danger" (click)="currentVote.state = 'archived'">Archive</button>
+    <button type="button" class="btn btn-secondary text-light " (click)="currentVote.state = voteState.active">Restart</button>
+    <button type="button" class="btn btn-danger" (click)="deleteVote(currentVote)">Delete</button>
+    <button type="button" class="btn btn-danger" (click)="currentVote.state = voteState.archived">Archive</button>
   </div>
 </ng-template>
-<ng-template [ngIf]="currentVote.state === 'waiting'">
+<ng-template [ngIf]="currentVote.state === voteState.waiting">
   <div class="btn-group btn-block" role="group">
-    <button type="button" class="btn btn-secondary" (click)="currentVote.state = 'active'">Start</button>
-    <button type="button" class="btn btn-danger" (click)="deleteVote($event, currentVote)">Delete</button>
+    <button type="button" class="btn btn-secondary text-light" (click)="currentVote.state = voteState.active">Start</button>
+    <button type="button" class="btn btn-danger" (click)="deleteVote(currentVote)">Delete</button>
   </div>
 </ng-template>
-<ng-template [ngIf]="currentVote.state === 'archived'">
+<ng-template [ngIf]="currentVote.state === voteState.archived">
   <div class="btn-group btn-block" role="group">
-    <button type="button" class="btn btn-danger" (click)="deleteVote($event, currentVote)">Delete</button>
+    <button type="button" class="btn btn-danger" (click)="deleteVote(currentVote)">Delete</button>
   </div>
 </ng-template>

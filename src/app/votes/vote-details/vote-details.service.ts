@@ -1,13 +1,11 @@
-import {Injectable, Input} from '@angular/core';
-import {IVote} from '../../models/vote-interface';
+import {Injectable } from '@angular/core';
 
 @Injectable()
 
 export class VoteDetailsService {
-  constructor() {
-  }
+  constructor() {}
+
   calculateResults(): void {
     console.log(`Results don't exist yet`);
   }
-
 }

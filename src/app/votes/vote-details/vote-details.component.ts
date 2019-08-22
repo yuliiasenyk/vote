@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IVote} from '../../models/vote-interface';
-import { VOTES } from 'src/app/mockes-data/votes';
+import {IVote, VoteState} from '../../models/vote-interface';
+import { VOTES } from 'src/app/mock-data/votes';
 import {VoteDetailsService} from './vote-details.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class VoteDetailsComponent implements OnInit {
   editFieldOpen: boolean;
   editButton: 'Edit' | 'Cancel';
   public votes: IVote[];
+  public voteState = VoteState;
 
   constructor( private editVoteService: VoteDetailsService) { }
 

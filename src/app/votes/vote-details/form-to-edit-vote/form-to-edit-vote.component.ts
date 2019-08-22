@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, AbstractControl, FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {IVote} from '../../../models/vote-interface';
 
 @Component({
@@ -10,36 +10,47 @@ import {IVote} from '../../../models/vote-interface';
 export class FormToEditVoteComponent implements OnInit {
   @Input() currentVote: IVote;
   editingForm: FormGroup;
-  options: FormArray;
 
-  constructor(public fb: FormBuilder) { }
-
+  constructor(public fb: FormBuilder) {}
   ngOnInit() {
-    this.editingForm = this.fb.group({
-      name: [this.currentVote.name, Validators.required],
-      description: [this.currentVote.description],
-      options: this.fb.array([ this.createNewOption() ]),
+    this.createForm();
+  }
+
+  createForm() {
+    this.editingForm = new FormGroup({
+      name: new FormControl(this.currentVote.name, [
+        Validators.required]),
+      description: new FormControl(this.currentVote.description),
+      options: new FormArray([
+        new FormControl(this.currentVote.options)
+      ])
     });
+  }
+
+  addNewOption() {
+    this.currentVote.options.push('new option');
+  }
+  deleteOption(option) {
+    this.currentVote.options.splice(this.currentVote.options.indexOf(option), 1);
+  }
+
+  get name()  {
+    return this.editingForm.get('name');
+  }
+  get description()  {
+    return this.editingForm.get('description');
+  }
+  get options(): AbstractControl {
+    return this.editingForm.get('options') as FormArray;
   }
 
   onEdit(editFormData): void {
-    this.currentVote.name = editFormData.name;
-    this.currentVote.description = editFormData.description;
-    this.currentVote.options = editFormData.options;
-  }
-
-  createNewOption(): FormGroup {
-    return this.fb.group({
-      option: ['', Validators.required],
-    });
-  }
-
-  addNewOption(): void {
-    this.options = this.editingForm.get('options') as FormArray;
-    this.currentVote.options.push('new option');
-  }
-
-  deleteOption(event, option): void {
-    this.currentVote.options.splice(this.currentVote.options.indexOf(option), 1) ;
+    if (this.editingForm.invalid) {
+      return;
+    } else {
+      this.currentVote.name = editFormData.name;
+      this.currentVote.description = editFormData.description;
+      this.currentVote.options = editFormData.options;
+    }
   }
 }

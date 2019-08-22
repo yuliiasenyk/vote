@@ -1,5 +1,4 @@
-import { IUser } from '../models/user-interface';
-import {IPagedUser} from '../models/user-interface';
+import {IPagedUser, IUser, UserStatus} from '../models/user-interface';
 import {PAGE_DATA, PAGE_DATA2} from './pages';
 
 export const USERS: IUser[] = [
@@ -8,40 +7,45 @@ export const USERS: IUser[] = [
     name: 'George',
     description: 'some description',
     login: 'admin',
-    status: 'active',
+    status: UserStatus.active,
     isAdmin: true,
+    permissions: true,
   },
   {
     id: 2,
     name: 'Ivan',
     description: 'some description',
     login: 'Ivan',
-    status: 'pending',
+    status: UserStatus.pending,
     isAdmin: false,
+    permissions: false,
   },
   {
     id: 3,
     name: 'Kate',
     description: 'some description',
     login: 'Kate',
-    status: 'blocked',
+    status: UserStatus.blocked,
     isAdmin: false,
+    permissions: false,
   },
   {
     id: 4,
     name: 'Diana',
     description: 'some description',
     login: 'Diana',
-    status: 'active',
+    status: UserStatus.active,
     isAdmin: false,
+    permissions: false,
   },
   {
     id: 5,
     name: 'Evo',
     description: 'some description',
     login: 'Evo',
-    status: 'blocked',
+    status: UserStatus.blocked,
     isAdmin: false,
+    permissions: true,
   },
 ];
 
@@ -51,16 +55,18 @@ export const USERS2: IUser[] = [
     name: 'Anna',
     description: 'some description',
     login: 'Anna',
-    status: 'active',
+    status: UserStatus.active,
     isAdmin: false,
+    permissions: true,
   },
   {
     id: 7,
     name: 'Vova',
     description: 'some description',
     login: 'Vova',
-    status: 'pending',
+    status: UserStatus.pending,
     isAdmin: false,
+    permissions: false,
   },
 ];
 

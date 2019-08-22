@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {IUser} from '../models/user-interface';
 import {Observable, of} from 'rxjs';
-import {USERS} from '../mockes-data/users';
+import {USERS} from '../mock-data/users';
 
 
 @Injectable({
@@ -32,7 +32,7 @@ export class AuthService {
       return of<IUser>(successfulLoginUser);
     } else {
       try {
-        new Error('No user');
+        throw new Error ('No user');
       } catch (e) {
         return of(failureLogin);
       }

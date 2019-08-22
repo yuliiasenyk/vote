@@ -1,24 +1,25 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IUser} from '../../models/user-interface';
-import { UsersService } from 'src/app/users/users.service';
+import {IUser, UserStatus} from '../../models/user-interface';
+import {UsersService} from 'src/app/users/users.service';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
 })
 export class UserProfileComponent implements OnInit {
   @Input() currentUser: IUser;
-  public blockActivateButton: string;
+  public userStatus = UserStatus;
   public openStats: boolean;
+  public statuses = [this.userStatus.active, this.userStatus.blocked, this.userStatus.pending];
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.blockActivateButton = 'change Status';
     this.openStats = false;
   }
 
-  changeStatusClicked(): void {
-    this.usersService.changeUserStatus(this.currentUser.status);
+  changeStatusClicked(value, user) {
+    this.usersService.changeUserStatus(value, user);
   }
 
   changePasswordClicked(): void {

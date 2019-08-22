@@ -1,10 +1,18 @@
 import {IPage} from './page-interface';
 
+export enum VoteState {
+  draft = 'draft',
+  active = 'active',
+  closed = 'closed',
+  archived = 'archived',
+  waiting = 'waiting',
+}
+
 export interface IVote {
   id: number;
   name: string;
   description: string;
-  state: 'draft' | 'active' | 'closed' | 'archived' | 'waiting' | 'deleted';
+  state: VoteState;
   options: any[];
   startDate?: string;
   endDate?: string;
