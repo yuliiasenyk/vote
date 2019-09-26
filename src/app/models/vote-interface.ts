@@ -14,11 +14,13 @@ export interface IVote {
   description: string;
   state: VoteState;
   options: any[];
-  startDate?: string;
-  endDate?: string;
+  start?: string;
+  end?: string;
+  results?: object;
+  participants: string[];
 }
 
-export interface IPagedVote {
+export interface IVotesAndPaginationParams {
   data: IVote[];
   pageData: IPage;
 }

@@ -1,0 +1,7 @@
+{
+  "mongoose": {
+    "url" : "mongodb://localhost:27017/votes",
+    "settings" : {"useNewUrlParser": true, "useCreateIndex": true,  "useUnifiedTopology": true}
+  },
+  "port" : 3000
+}

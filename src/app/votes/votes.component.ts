@@ -1,6 +1,6 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, Output, EventEmitter} from '@angular/core';
 import {VotesService} from './votes.service';
-import {IPagedVote, IVote} from '../models/vote-interface';
+import {IVotesAndPaginationParams, IVote, VoteState} from '../models/vote-interface';
 import {IPage} from '../models/page-interface';
 import {Subscription} from 'rxjs';
 
@@ -13,32 +13,23 @@ import {Subscription} from 'rxjs';
 export class VotesComponent implements OnInit, OnDestroy {
   votes: IVote[];
   currentVote: IVote;
-  pageOfVotes: IPage;
+  pageParams: IPage;
+
   public dataSubscription: Subscription;
 
   constructor(private votesService: VotesService) { }
 
   ngOnInit() {
-
-   this.dataSubscription = this.votesService.getVotesData().subscribe((pagedVote: IPagedVote) => {
-      this.votes = pagedVote.data;
-      this.pageOfVotes = pagedVote.pageData;
-      if (Array.isArray(this.votes) && this.votes.length) {
-        this.currentVote = this.votes[0];
-      }
-    });
-  }
-
-  addNewVote() {
-    this.votesService.addNewVote();
-  }
-
-  voteSelected(vote: IVote): void {
-    this.currentVote = vote;
+    this.dataSubscription = this.votesService.getVotesData()
+      .subscribe((pageWithVotes: IVotesAndPaginationParams) => {
+        this.votes = pageWithVotes.data;
+        this.pageParams = pageWithVotes.pageData;
+      });
   }
 
   pageSelected(page: number): void {
-    if (page !== this.pageOfVotes.page) {
+    this.currentVote = null;
+    if (page !== this.pageParams.page) {
       this.votesService.getPage(page);
     }
   }
@@ -48,4 +39,15 @@ export class VotesComponent implements OnInit, OnDestroy {
       this.dataSubscription.unsubscribe();
     }
   }
+
+  addNewVoteClicked() {
+    this.currentVote = {name: '', description: '', options: [], id: 1, state: VoteState.draft, participants: []};
+    this.votesService.behaviorSubjectToOpenForm.next(true);
+    console.log(this.currentVote);
+  }
+
+  voteSelected(vote: IVote): void {
+    this.currentVote = vote;
+  }
+
 }

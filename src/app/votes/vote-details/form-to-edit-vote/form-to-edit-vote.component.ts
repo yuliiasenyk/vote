@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, AbstractControl, FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {IVote} from '../../../models/vote-interface';
+import {VoteDetailsService} from '../vote-details.service';
 
 @Component({
   selector: 'app-form-to-edit-vote',
@@ -11,7 +12,8 @@ export class FormToEditVoteComponent implements OnInit {
   @Input() currentVote: IVote;
   editingForm: FormGroup;
 
-  constructor(public fb: FormBuilder) {}
+  constructor(public fb: FormBuilder, private voteService: VoteDetailsService) {}
+
   ngOnInit() {
     this.createForm();
   }
@@ -44,13 +46,11 @@ export class FormToEditVoteComponent implements OnInit {
     return this.editingForm.get('options') as FormArray;
   }
 
-  onEdit(editFormData): void {
+  onEdit(editFormData, vote): void {
     if (this.editingForm.invalid) {
       return;
     } else {
-      this.currentVote.name = editFormData.name;
-      this.currentVote.description = editFormData.description;
-      this.currentVote.options = editFormData.options;
+      this.voteService.editVote(editFormData, vote);
     }
   }
 }

@@ -2,7 +2,7 @@
 
 <div class="d-md-flex mt-4 align-items-start">
   <div class="col-sm-6">
-    <button class="btn btn-primary mb-2 disabled" (click)="addNewVote()">Add new vote</button>
+    <button class="btn btn-primary mb-2 disabled" (click)="addNewVoteClicked()">Add new vote</button>
 
     <app-votes-list
       [votes]="votes"
@@ -12,14 +12,13 @@
 
     <app-paginator
       *ngIf="votes.length"
-      [pageData]="pageOfVotes"
+      [pageData]="pageParams"
       (pageSelected)="pageSelected($event)">
     </app-paginator>
   </div>
 
   <div class="col-sm-6">
     <app-vote-details
-      *ngIf="currentVote"
       [currentVote]="currentVote"
     ></app-vote-details>
   </div>

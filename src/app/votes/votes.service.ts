@@ -1,22 +1,32 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {IPagedVote} from '../models/vote-interface';
-import {INITIAL_VOTES_DATA, SECOND_VOTES_DATA} from '../mock-data/votes';
+import {IVotesAndPaginationParams} from '../models/vote-interface';
+import {ApiService} from '../api.service';
+const initData = {data: [], pageData: {page: 0, totalPages: 0}};
 
 @Injectable()
 export class VotesService  {
-  private behaviorSubject =  new BehaviorSubject<IPagedVote>(INITIAL_VOTES_DATA);
-  getVotesData(): Observable<IPagedVote> {
+  private behaviorSubject =  new BehaviorSubject<IVotesAndPaginationParams>(initData);
+  public behaviorSubjectToCloseVoteInfo = new BehaviorSubject<boolean>(false);
+  public behaviorSubjectToCheckParticipation = new BehaviorSubject<boolean>(null);
+  public behaviorSubjectToOpenForm = new BehaviorSubject<boolean>(null);
+
+  constructor(private api: ApiService) {
+    this.getPage(1);
+  }
+
+  getVotesData(): Observable<IVotesAndPaginationParams> {
     return  this.behaviorSubject.asObservable();
   }
 
-getPage(page) {
-    if (page === undefined || page === 1) {
-      this.behaviorSubject.next(INITIAL_VOTES_DATA);
-    } else {
-      this.behaviorSubject.next(SECOND_VOTES_DATA);
-    }
-}
+  getPage(page: number): void {
+    this.api.get('/api/votes/' + page)
+      .subscribe((result: IVotesAndPaginationParams) => {
+        if (result) {
+          this.behaviorSubject.next(result);
+        }
+      });
+  }
 
   addNewVote() {}
 }

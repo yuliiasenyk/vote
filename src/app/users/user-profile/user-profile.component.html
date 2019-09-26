@@ -3,7 +3,7 @@
     <tbody>
     <tr>
       <th>Name</th>
-      <td><h3>{{ currentUser.name }} <span *ngIf="currentUser.isAdmin" class="badge badge-info">Admin</span></h3></td>
+      <td><h3>{{ currentUser.username }} <span *ngIf="currentUser.isAdmin" class="badge badge-info">Admin</span></h3></td>
     </tr>
     <tr >
       <th>Description</th>
@@ -13,11 +13,11 @@
       <th>Status</th>
       <td>{{ currentUser.status }}</td>
     </tr>
-    <tr *ngIf="!currentUser.permissions">
+    <tr *ngIf="currentUser.permissions > 1">
       <th>Permissions</th>
       <td>NO</td>
     </tr>
-    <tr *ngIf="currentUser.permissions">
+    <tr *ngIf="currentUser.permissions === 1">
       <th>Permissions</th>
       <td>YES</td>
     </tr>
@@ -29,6 +29,14 @@
     <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
   </select>
   <button class="btn btn-secondary btn-outline-primary text-light m-1" (click)="showStatsClicked()">Statistic</button>
-  <p *ngIf="openStats" class="text-light">No statistics yet</p>
-
+  <div *ngIf="openStats" class="text-light">
+    <p>Took part in {{participatedVotesNumber}} votes </p>
+    <table class="table bg-gradient-secondary table-hover">
+      <tbody>
+      <tr *ngFor="let vote of userResults">
+        <td>{{vote.question}}</td>
+        <td>{{vote.choice}}</td>
+      </tr>
+      </tbody>
+    </table>  </div>
 </div>

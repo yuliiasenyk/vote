@@ -1,5 +1,5 @@
 <div class="container">
-<table class="table bg-gradient-secondary table-bordered table-hover">
+  <table class="table bg-gradient-secondary table-bordered table-hover">
     <thead class="bg-gradient-primary">
     <tr>
       <th scope="col">Name</th>
@@ -12,8 +12,8 @@
     <tr (click)="rowClicked(vote)" *ngFor="let vote of votes" [ngClass]="{'bg-gradient-info' : vote === currentVote}">
       <th>{{vote.name}}</th>
       <td>{{vote.state}}</td>
-      <td>{{vote.startDate}}</td>
-      <td>{{vote.endDate}}</td>
+      <td>{{vote.start}}</td>
+      <td>{{vote.end}}</td>
     </tr>
     </tbody>
   </table>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter} from '@angular/core';
 import { IPage } from 'src/app/models/page-interface';
 const MAX_BUTTON_NUMBER = 3;
 
@@ -7,7 +7,7 @@ const MAX_BUTTON_NUMBER = 3;
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss']
 })
-export class PaginatorComponent implements OnInit {
+export class PaginatorComponent implements OnInit, OnChanges {
   @Output() pageSelected = new EventEmitter<number>();
   @Input() pageData: IPage;
   public initialPage: number;
@@ -15,6 +15,10 @@ export class PaginatorComponent implements OnInit {
 
   ngOnInit() {
     this.initialPage = 1;
+    this.createButtonArray();
+  }
+
+  ngOnChanges() {
     this.createButtonArray();
   }
 
@@ -40,3 +44,4 @@ export class PaginatorComponent implements OnInit {
     }
   }
 }
+

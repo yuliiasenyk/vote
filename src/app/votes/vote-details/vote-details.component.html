@@ -1,3 +1,4 @@
+<div *ngIf="currentVote">
 <button type="button"
         class="btn btn-lg btn-secondary text-light float-right"
         (click)="editVoteFormOpenToggle()"
@@ -9,8 +10,15 @@
 <app-form-to-vote *ngIf="!editFieldOpen" [currentVote]="currentVote"> </app-form-to-vote>
 
 <div *ngIf="currentVote.state === voteState.closed || currentVote.state === voteState.archived">
-<button type="button" class="btn btn-secondary btn-lg btn-block text-light btn-outline-primary" (click)="showResults()">Results</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block text-light btn-outline-primary" (click)="seeParticipantStats()">Participant statistic</button>
+  <button type="button" class="btn btn-secondary btn-lg btn-block text-light btn-outline-primary" (click)="showResults(currentVote)">Results</button>
+  <button type="button" class="btn btn-secondary btn-lg btn-block text-light btn-outline-primary" (click)="seeParticipantStats()">Participant statistic</button>
 </div>
 <br>
 <app-vote-control-buttons [currentVote]="currentVote"> </app-vote-control-buttons>
+<div *ngIf="resultsOpen" class="text-light container">
+  <div *ngFor="let vote of voteResults" class="row">
+    <span class="col-sm-3">{{vote[0]}}</span>
+    <span class="col-sm-3">{{vote[1]}}</span>
+  </div>
+</div>
+</div>

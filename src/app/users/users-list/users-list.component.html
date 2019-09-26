@@ -10,11 +10,17 @@
     </thead>
     <tbody>
     <tr (click)="rowClicked(user)"  *ngFor="let user of users" [ngClass]="{'bg-gradient-info' : user === currentUser}">
-      <th>{{user.name}}</th>
+      <th>{{user.username}}</th>
       <td>{{user.description}}</td>
       <td>{{user.status}}</td>
-      <td *ngIf="user.permissions">YES</td>
-      <td *ngIf="!user.permissions">No permissions</td>
+      <td>
+        <select class="btn btn-secondary btn-outline-primary text-light m-1" [value]=user.permissions #permissions (change)="changePermissionsClicked(permissions.value, currentUser)">
+          <option [value]="1">Yes</option>
+          <option [value]="2">No Permission</option>
+          <option [value]="3">Not active</option>
+
+        </select>
+      </td>
     </tr>
     </tbody>
   </table>
